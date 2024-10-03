@@ -86,7 +86,7 @@ public class AssociativeArray<K, V> {
           tempString = tempString + pairs[i].key.toString() + ":" + "null";
         } else {
           tempString = tempString + pairs[i].key.toString() + ":" + pairs[i].val.toString();
-        }
+        } // if
         if (i != (size - 1)) {
           tempString = tempString + ", ";
         } // if
@@ -113,16 +113,16 @@ public class AssociativeArray<K, V> {
     } // if
     if (pairs.length == this.size) {
       this.expand();
-    }
+    } // if
     if (hasKey(key)) {
       try {
         this.pairs[find(key)] = new KVPair<K, V>(key, value);
       } catch (KeyNotFoundException e) {
-      }
+      } // try
     } else {
       this.pairs[this.size] = new KVPair<K, V>(key, value);
       this.size++;
-    }
+    } // if
   } // set(K,V)
 
   /**
@@ -163,19 +163,19 @@ public class AssociativeArray<K, V> {
    */
   public void remove(K key) {
     if (hasKey(key)) {
-      AssociativeArray<K,V> tempArray = new AssociativeArray<>();
+      AssociativeArray<K, V> tempArray = new AssociativeArray<>();
       for (int i = 0; i < this.size; i++) {
         if (!pairs[i].key.equals(key)) {
           try {
             tempArray.set(pairs[i].key, pairs[i].val);
           } catch (NullKeyException e) {
-            
-          }
+
+          } // try
         } // if
-      }
+      } // for
       this.pairs = tempArray.pairs;
       size--;
-    }
+    } // if
   } // remove(K)
 
   /**
