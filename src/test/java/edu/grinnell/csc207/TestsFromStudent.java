@@ -25,8 +25,17 @@ public class TestsFromStudent {
     AssociativeArray<String, String> aa = 
         new AssociativeArray<String, String>();
     aa.set("a", "A");
+    assertTrue(aa.hasKey("a"),"test hasKey");
+    assertEquals("{a:A}", aa.toString(), "test to string");
+    assertEquals(1, aa.size(), "test get size");
     aa.set("b", "B");
+    assertTrue(aa.hasKey("b"),"test hasKey");
+    assertEquals("{a:A,b:B}", aa.toString(), "test to string");
+    assertEquals(2, aa.size(), "test get size");
     aa.set("c", "C");
+    assertTrue(aa.hasKey("c"),"test hasKey");
+    assertEquals("{a:A,b:B,c:C}", aa.toString(), "test to string");
+    assertEquals(3, aa.size(), "test get size");
     assertEquals("A", aa.get("a"), "test longer array");
     assertEquals("B", aa.get("b"), "test longer array");
     assertEquals("C", aa.get("c"), "test longer array");
@@ -36,14 +45,14 @@ public class TestsFromStudent {
     AssociativeArray<String, String> aa = 
         new AssociativeArray<String, String>();
     aa.set("a", "A");
-    aa.hasKey("a");
     aa.set("b", "B");
-    aa.hasKey("b");
     aa.set("c", "C");
-    aa.hasKey("c");
+
     assertThrows(KeyNotFoundException.class,()-> aa.get("d"), "test invalid key");
     assertThrows(NullKeyException.class,()-> aa.set(null, "C"), "test invalid key");
     aa.remove("a");
+    assertFalse(aa.hasKey("a"),"test hasKey");
+    assertEquals("{b:B,c:C}", aa.toString(), "test to string");
     assertThrows(KeyNotFoundException.class,()-> aa.get("a"), "test invalid key");
     
   }

@@ -82,10 +82,10 @@ public class AssociativeArray<K, V> {
    */
   public String toString() {
     String tempString = "{";
-    for (int i = 0; i < size ; i++) {
+    for (int i = 0; i < this.size ; i++) {
       if (pairs[i] != null) {
        tempString = tempString + pairs[i].key.toString() + ":" + pairs[i].val.toString();
-       if (i == --size) {
+       if (i != --size) {
         tempString = tempString +",";
        }
       }
