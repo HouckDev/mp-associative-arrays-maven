@@ -62,7 +62,17 @@ public class AssociativeArray<K, V> {
    * @return a new copy of the array
    */
   public AssociativeArray<K, V> clone() {
-    return null; // STUB
+    AssociativeArray<K, V> tempAA = new AssociativeArray<K, V>();
+    for (int i = 0; i < pairs.length ; i++) {
+      if (pairs[i] != null) {
+        try {
+          tempAA.set(pairs[i].key, pairs[i].val);
+        } catch (NullKeyException e) {
+        }
+      }
+    }
+    
+    return tempAA;
   } // clone()
 
   /**
