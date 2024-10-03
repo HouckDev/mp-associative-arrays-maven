@@ -128,12 +128,7 @@ public class AssociativeArray<K, V> {
    *   when the key is null or does not appear in the associative array.
    */
   public V get(K key) throws KeyNotFoundException {
-    for (KVPair<K,V> pair : pairs) {
-      if (pair != null && pair.key.equals(key)) {
-        return pair.val;
-      }
-    }
-    throw new KeyNotFoundException();
+    return pairs[find(key)].val;
   } // get(K)
 
   /**
@@ -204,7 +199,7 @@ public class AssociativeArray<K, V> {
    *   If the key does not appear in the associative array.
    */
   int find(K key) throws KeyNotFoundException {
-    for (int i = 0; i < pairs.length ; i++) {
+    for (int i = 0; i < this.size ; i++) {
       if (pairs[i] != null && pairs[i].key.equals(key)) {
         return i;
       }
