@@ -108,7 +108,12 @@ public class AssociativeArray<K, V> {
    *   when the key is null or does not appear in the associative array.
    */
   public V get(K key) throws KeyNotFoundException {
-    return null; // STUB
+    for (KVPair<K,V> pair : pairs) {
+      if (pair.key.equals(key)) {
+        return pair.val;
+      }
+    }
+    throw new KeyNotFoundException();
   } // get(K)
 
   /**
