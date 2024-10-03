@@ -85,7 +85,7 @@ public class AssociativeArray<K, V> {
     for (int i = 0; i < this.size ; i++) {
       if (pairs[i] != null) {
        tempString = tempString + pairs[i].key.toString() + ":" + pairs[i].val.toString();
-       if (i != --size) {
+       if (i != (size - 1)) {
         tempString = tempString +",";
        }
       }
