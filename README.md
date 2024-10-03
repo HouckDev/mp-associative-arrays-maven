@@ -1,7 +1,15 @@
 Associative Arrays
 ==================
 
-Starter code for a CSC-207 project on associative arrays.
+**Authors**
 
-_Students must replace the contents of this file with appropriate
-contents, including class, author, date, and URL._
+* Samuel A. Rebelsky (starter code).
+* Paden Houck
+
+**Notes for the reader**
+
+Associative array implementations.
+
+---
+
+This code may be found at <https://github.com/HouckDev/mp-associative-arrays-maven>. The original project can be found at <https://github.com/Grinnell-CSC207/mp-associative-arrays-maven>.
