@@ -139,7 +139,12 @@ public class AssociativeArray<K, V> {
    *   The key to remove.
    */
   public void remove(K key) {
-    // STUB
+    for (int i = 0; i < pairs.length ; i++) {
+      if (pairs[i] != null && pairs[i].key.equals(key)) {
+        pairs[i] = null;
+        return;
+      }
+    }
   } // remove(K)
 
   /**
