@@ -81,7 +81,16 @@ public class AssociativeArray<K, V> {
    * @return a string of the form "{Key0:Value0, Key1:Value1, ... KeyN:ValueN}"
    */
   public String toString() {
-    return "{}"; // STUB
+    String tempString = "{";
+    for (int i = 0; i < size ; i++) {
+      if (pairs[i] != null) {
+       tempString = tempString + pairs[i].key.toString() + ":" + pairs[i].val.toString();
+       if (i == --size) {
+        tempString = tempString +",";
+       }
+      }
+    }
+    return tempString + "}";
   } // toString()
 
   // +----------------+----------------------------------------------
