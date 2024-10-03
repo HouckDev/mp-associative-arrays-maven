@@ -120,7 +120,7 @@ public class AssociativeArray<K, V> {
    *
    * @throws KeyNotFoundException when the key is null or does not appear in the associative array.
    */
-  public V get(K key) throws KeyNotFoundException, NullKeyException {
+  public V get(K key) throws KeyNotFoundException {
     return pairs[find(key)].val;
   } // get(K)
 
@@ -132,7 +132,7 @@ public class AssociativeArray<K, V> {
    *
    * @return true if the key appears and false otherwise.
    */
-  public boolean hasKey(K key) throws NullKeyException {
+  public boolean hasKey(K key) {
     try {
       find(key);
       return true;
@@ -147,7 +147,7 @@ public class AssociativeArray<K, V> {
    *
    * @param key The key to remove.
    */
-  public void remove(K key) throws NullKeyException {
+  public void remove(K key) {
     try {
       pairs[find(key)] = null;
       size--;
@@ -186,9 +186,9 @@ public class AssociativeArray<K, V> {
    *
    * @throws KeyNotFoundException If the key does not appear in the associative array.
    */
-  int find(K key) throws KeyNotFoundException, NullKeyException {
+  int find(K key) throws KeyNotFoundException {
     if (key == null) {
-      throw new NullKeyException();
+      throw new KeyNotFoundException();
     } // if
     for (int i = 0; i < this.size; i++) {
       if (pairs[i] != null && pairs[i].key.equals(key)) {
