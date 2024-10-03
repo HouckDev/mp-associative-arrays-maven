@@ -36,8 +36,11 @@ public class TestsFromStudent {
     AssociativeArray<String, String> aa = 
         new AssociativeArray<String, String>();
     aa.set("a", "A");
+    aa.hasKey("a");
     aa.set("b", "B");
+    aa.hasKey("b");
     aa.set("c", "C");
+    aa.hasKey("c");
     assertThrows(KeyNotFoundException.class,()-> aa.get("d"), "test invalid key");
     assertThrows(NullKeyException.class,()-> aa.set(null, "C"), "test invalid key");
     aa.remove("a");
