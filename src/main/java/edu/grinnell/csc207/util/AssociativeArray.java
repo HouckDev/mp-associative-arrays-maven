@@ -160,6 +160,7 @@ public class AssociativeArray<K, V> {
   public void remove(K key) {
     try {
       pairs[find(key)] = null;
+      size--;
     } catch (KeyNotFoundException e) {
       return;
     }

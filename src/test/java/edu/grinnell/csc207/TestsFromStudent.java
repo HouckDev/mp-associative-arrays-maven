@@ -69,4 +69,16 @@ public class TestsFromStudent {
     assertEquals(aa, aa2.get("a"), "test nested array");
     assertEquals("A", aa2.get("a").get("a"), "test nested array");
   }
+  @Test
+  public void houckPadenEdge2() throws Exception {
+    AssociativeArray<String, String> aa = 
+        new AssociativeArray<String, String>();
+    aa.set("a", "A");
+    aa.set("b", "B");
+    aa.set("c", "C");
+    aa.set("C", "c");
+    assertThrows(NullKeyException.class,()-> aa.get(null), "test null key");
+    assertThrows(NullKeyException.class,()-> aa.set(null,"test"), "test null key");
+    assertThrows(NullKeyException.class,()-> aa.hasKey(null), "test null key");
+  }
 } // class TestsFromSam
