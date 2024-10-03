@@ -17,6 +17,11 @@ import org.junit.jupiter.api.Test;
  */
 public class TestsFromStudent {
   
+  /**
+   * Basic tests to ensure AssociativeArray can have elements added to it and that it changes appropriately
+   * 
+   * @throws Exception
+   */
   @Test
   public void houckPadenTest1() throws Exception {
     AssociativeArray<String, String> aa = 
@@ -34,6 +39,12 @@ public class TestsFromStudent {
     assertEquals("B", aa.get("b"), "test longer array");
     assertEquals("C", aa.get("c"), "test longer array");
   }
+  
+  /**
+   * Basic tests to ensure AssociativeArray can have elements removed from it and that it changes appropriately.
+   * 
+   * @throws Exception
+   */
   @Test
   public void houckPadenTest2() throws Exception {
     AssociativeArray<String, String> aa = 
@@ -50,6 +61,12 @@ public class TestsFromStudent {
     assertThrows(KeyNotFoundException.class,()-> aa.get("a"), "test invalid key");
     
   }
+  
+  /**
+   * Tests to ensure AssociativeArray can handle self references and nested arrays.
+   * 
+   * @throws Exception
+   */
   @Test
   public void houckPadenEdge1() throws Exception {
     AssociativeArray<String, String> aa = 
@@ -66,6 +83,13 @@ public class TestsFromStudent {
     assertEquals(aa, aa2.get("a"), "test nested array");
     assertEquals("A", aa2.get("a").get("a"), "test nested array");
   }
+
+  
+  /**
+   * Tests to check null key errors.
+   * 
+   * @throws Exception
+   */
   @Test
   public void houckPadenEdge2() throws Exception {
     AssociativeArray<String, String> aa = 
@@ -74,8 +98,8 @@ public class TestsFromStudent {
     aa.set("b", "B");
     aa.set("c", "C");
     aa.set("C", "c");
-    assertThrows(NullKeyException.class,()-> aa.get(null), "test null key");
+    assertThrows(KeyNotFoundException.class,()-> aa.get(null), "test null key");
     assertThrows(NullKeyException.class,()-> aa.set(null,"test"), "test null key");
-    assertThrows(NullKeyException.class,()-> aa.hasKey(null), "test null key");
+    assertThrows(KeyNotFoundException.class,()-> aa.hasKey(null), "test null key");
   }
 } // class TestsFromSam
