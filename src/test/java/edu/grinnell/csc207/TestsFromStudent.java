@@ -39,7 +39,7 @@ public class TestsFromStudent {
     aa.set("b", "B");
     aa.set("c", "C");
     assertThrows(KeyNotFoundException.class,()-> aa.get("d"), "test invalid key");
-    assertThrows(NullKeyException.class,()-> aa.get(null), "test invalid key");
+    assertThrows(NullKeyException.class,()-> aa.set(null, "C"), "test invalid key");
     aa.remove("a");
     assertThrows(KeyNotFoundException.class,()-> aa.get("a"), "test invalid key");
     

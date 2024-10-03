@@ -91,7 +91,8 @@ public class AssociativeArray<K, V> {
    *   If the client provides a null key.
    */
   public void set(K key, V value) throws NullKeyException {
-    this.pairs[--size] = new KVPair<K,V>(key,value);
+    if (key == null) {throw new NullKeyException();}
+    this.pairs[this.size] = new KVPair<K,V>(key,value);
     this.size++;
   } // set(K,V)
 
@@ -109,7 +110,7 @@ public class AssociativeArray<K, V> {
    */
   public V get(K key) throws KeyNotFoundException {
     for (KVPair<K,V> pair : pairs) {
-      if (pair.key.equals(key)) {
+      if (pair != null && pair.key.equals(key)) {
         return pair.val;
       }
     }
