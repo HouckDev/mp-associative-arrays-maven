@@ -82,9 +82,13 @@ public class AssociativeArray<K, V> {
     String tempString = "{";
     for (int i = 0; i < this.size; i++) {
       if (pairs[i] != null) {
-        tempString = tempString + pairs[i].key.toString() + ":" + pairs[i].val.toString();
+        if (pairs[i].val == null) {
+          tempString = tempString + pairs[i].key.toString() + ":" + "null";
+        } else {
+          tempString = tempString + pairs[i].key.toString() + ":" + pairs[i].val.toString();
+        }
         if (i != (size - 1)) {
-          tempString = tempString + ",";
+          tempString = tempString + ", ";
         } // if
       } // if
     } // for
@@ -107,8 +111,18 @@ public class AssociativeArray<K, V> {
     if (key == null) {
       throw new NullKeyException();
     } // if
-    this.pairs[this.size] = new KVPair<K, V>(key, value);
-    this.size++;
+    if (pairs.length == this.size) {
+      this.expand();
+    }
+    if (hasKey(key)) {
+      try {
+        this.pairs[find(key)] = new KVPair<K, V>(key, value);
+      } catch (KeyNotFoundException e) {
+      }
+    } else {
+      this.pairs[this.size] = new KVPair<K, V>(key, value);
+      this.size++;
+    }
   } // set(K,V)
 
   /**
@@ -135,10 +149,10 @@ public class AssociativeArray<K, V> {
   public boolean hasKey(K key) {
     try {
       find(key);
-      return true;
     } catch (KeyNotFoundException e) {
       return false;
     } // try
+    return true;
   } // hasKey(K)
 
   /**
@@ -148,12 +162,20 @@ public class AssociativeArray<K, V> {
    * @param key The key to remove.
    */
   public void remove(K key) {
-    try {
-      pairs[find(key)] = null;
+    if (hasKey(key)) {
+      AssociativeArray<K,V> tempArray = new AssociativeArray<>();
+      for (int i = 0; i < this.size; i++) {
+        if (!pairs[i].key.equals(key)) {
+          try {
+            tempArray.set(pairs[i].key, pairs[i].val);
+          } catch (NullKeyException e) {
+            
+          }
+        } // if
+      }
+      this.pairs = tempArray.pairs;
       size--;
-    } catch (KeyNotFoundException e) {
-      return;
-    } // try
+    }
   } // remove(K)
 
   /**

@@ -100,6 +100,6 @@ public class TestsFromStudent {
     aa.set("C", "c");
     assertThrows(KeyNotFoundException.class,()-> aa.get(null), "test null key");
     assertThrows(NullKeyException.class,()-> aa.set(null,"test"), "test null key");
-    assertThrows(KeyNotFoundException.class,()-> aa.hasKey(null), "test null key");
+    assertFalse(aa.hasKey(null), "test null key");
   }
 } // class TestsFromSam
